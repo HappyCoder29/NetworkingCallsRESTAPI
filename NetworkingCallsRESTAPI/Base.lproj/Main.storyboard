@@ -1,24 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NetworkingCallsRESTAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AoJ-P1-8Uw">
+                                <rect key="frame" x="30" y="30" width="260" height="122"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Symbol of Stock" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftw-FU-drO">
+                                        <rect key="frame" x="20" y="0.0" width="220" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="SQN-p5-qWF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTD-YJ-vhj">
+                                        <rect key="frame" x="20" y="44" width="220" height="34"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Get Stock Price"/>
+                                        <connections>
+                                            <action selector="getStockValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XFk-ga-gAW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stock Price = 141.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-NE-OmA">
+                                        <rect key="frame" x="20" y="88" width="220" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KTD-YJ-vhj" firstAttribute="leading" secondItem="AoJ-P1-8Uw" secondAttribute="leading" constant="20" id="I9j-mq-Dgi"/>
+                                    <constraint firstAttribute="trailing" secondItem="ftw-FU-drO" secondAttribute="trailing" constant="20" id="Klk-lQ-bS6"/>
+                                    <constraint firstAttribute="trailing" secondItem="KTD-YJ-vhj" secondAttribute="trailing" constant="20" id="a8Z-67-GgJ"/>
+                                    <constraint firstItem="ftw-FU-drO" firstAttribute="leading" secondItem="AoJ-P1-8Uw" secondAttribute="leading" constant="20" id="qTs-b2-0b4"/>
+                                    <constraint firstItem="2o8-NE-OmA" firstAttribute="leading" secondItem="AoJ-P1-8Uw" secondAttribute="leading" constant="20" id="wpG-74-D5E"/>
+                                    <constraint firstAttribute="trailing" secondItem="2o8-NE-OmA" secondAttribute="trailing" constant="20" id="znW-7G-SBQ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AoJ-P1-8Uw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="FcF-KN-o66"/>
+                            <constraint firstItem="AoJ-P1-8Uw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Mfu-wB-4Yv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AoJ-P1-8Uw" secondAttribute="trailing" constant="30" id="YFT-je-HQq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AoJ-P1-8Uw" secondAttribute="bottom" constant="30" id="xEu-4F-yN0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblStock" destination="2o8-NE-OmA" id="459-SN-rtP"/>
+                        <outlet property="txtStock" destination="ftw-FU-drO" id="oL5-fY-Kfx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18.75" y="97.5"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
