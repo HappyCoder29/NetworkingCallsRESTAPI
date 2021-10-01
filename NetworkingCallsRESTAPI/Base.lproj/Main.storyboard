@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AoJ-P1-8Uw">
-                                <rect key="frame" x="30" y="30" width="260" height="122"/>
+                                <rect key="frame" x="30" y="30" width="260" height="420"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Symbol of Stock" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftw-FU-drO">
-                                        <rect key="frame" x="20" y="0.0" width="220" height="34"/>
+                                        <rect key="frame" x="20" y="0.0" width="220" height="133.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="SQN-p5-qWF"/>
                                         </constraints>
@@ -28,7 +28,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTD-YJ-vhj">
-                                        <rect key="frame" x="20" y="44" width="220" height="34"/>
+                                        <rect key="frame" x="20" y="143.5" width="220" height="133"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Get Stock Price"/>
                                         <connections>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stock Price = 141.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-NE-OmA">
-                                        <rect key="frame" x="20" y="88" width="220" height="34"/>
+                                        <rect key="frame" x="20" y="286.5" width="220" height="133.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

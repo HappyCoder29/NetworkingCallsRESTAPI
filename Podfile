@@ -9,5 +9,6 @@ target 'NetworkingCallsRESTAPI' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod "SwiftSpinner"
+  pod "PromiseKit"
 
 end

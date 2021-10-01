@@ -9,6 +9,7 @@ import UIKit
 import SwiftyJSON
 import SwiftSpinner
 import Alamofire
+import PromiseKit
 
 class ViewController: UIViewController {
     
@@ -27,44 +28,42 @@ class ViewController: UIViewController {
 
     @IBAction func getStockValue(_ sender: Any) {
         
-        if lblStock.text == "" {
+        if txtStock.text == "" {
             return;
         }
         
-        let url = baseURL + txtStock.text! + "?apikey=" + apiKey
-        
-        SwiftSpinner.show("Getting Stock Value")
-        
-        AF.request(url).responseJSON { response in
-        
-            SwiftSpinner.hide()
-            
-            if response.error != nil {
-                print(response.error!)
-                return
-            }
-            
-            print(response.data)
-            let stocks = JSON(response.data!).array
-            
-            if stocks?.isEmpty == true {
-                print("Stock Symbol was incorrect ")
-                return
-            }
-            
-            // We have atleast one  value
-            let firstStock = stocks![0]
-            let price = firstStock["price"]
-            let symbol = firstStock["symbol"]
-            let volume = firstStock["volume"]
-            
-            self.lblStock.text = "\(symbol) price = \(price)";
-            
-            
+        getStockPrice(txtStock.text!)
+        .done{ price, symbol, volume in
+            self.lblStock.text = "Stock \(symbol) price = \(price)"
+        }
+        .catch { error in
+            print(error)
         }
         
         
     }
     
+    func getStockPrice(_ symbol : String) -> Promise< (Float, String, Int)> {
+     
+        return Promise< (Float, String, Int) > { seal -> Void in
+           
+            let url = baseURL + symbol + "?apikey=" + apiKey
+            
+            AF.request(url).responseJSON { response in
+        
+                if response.error != nil {
+                    seal.reject(response.error as! Error)
+                }
+                
+                let stocks = JSON( response.data!).array
+                let firstStock = stocks![0]
+                let price = firstStock["price"].floatValue
+                let symbol = firstStock["symbol"].stringValue
+                let volume = firstStock["volume"].intValue
+                seal.fulfill( (price, symbol, volume ))
+            }
+        }// End of return promise
+    
+    }
 }
 
